@@ -6,7 +6,19 @@
         <feature>jakartaee-10.0</feature>
         
     </featureManager>
-
+    <library id="jdbcLib">
+        <fileset dir="jdbc" includes="*.jar" />
+    </library>
+    <dataSource jndiName="jdbc/db_contacts">
+        <jdbcDriver libraryRef="jdbcLib" />
+        <properties serverName="localhost" portNumber="3306"
+            databaseName="db_contacts"
+            user="root"
+            password="admin" />
+        <connectionManager
+            maxPoolSize="10"
+        />
+    </dataSource>
     <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
 
     <!-- For the keystore, default keys are generated and stored in a keystore. To provide the keystore password, generate an 

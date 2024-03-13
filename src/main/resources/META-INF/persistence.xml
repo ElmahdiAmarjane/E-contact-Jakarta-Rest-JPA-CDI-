@@ -3,11 +3,11 @@
    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence 
    https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
    version="3.0">
-    <persistence-unit name="db_notes" transaction-type="JTA">
-    <jta-data-source>jdbc/db_notes</jta-data-source>
+    <persistence-unit name="db_contacts" transaction-type="JTA">
+    <jta-data-source>jdbc/db_contacts</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-  <property name="jakarta.persistence.schema-generation.database.action"        value="create"/>
+  <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
         </properties>   
     </persistence-unit>
 
