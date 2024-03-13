@@ -10,8 +10,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 @Entity
+@NamedQuery(name="auth",query="SELECT u FROM User u where u.password = :password AND u.login = :login")
 public class User implements Serializable{
 
      private static final long serialVersionUID = 1L;
@@ -63,7 +65,7 @@ public boolean isAdmin() {
      return isAdmin;
 }
 
-public void setAdmin(boolean isAdmin) {
+public void setisAdmin(boolean isAdmin) {
      this.isAdmin = isAdmin;
 }
 

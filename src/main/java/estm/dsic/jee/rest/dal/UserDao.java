@@ -6,7 +6,9 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.PersistenceContext;
+import jakarta.resource.cci.ResultSet;
 import jakarta.transaction.Transactional;
 
 @Named
@@ -24,10 +26,22 @@ public class UserDao {
         } catch (Exception e) {
             System.out.println("Error creating new User: "+e);
             return false;
+        }   
+           }
+        public User auth(User u){
+              try {
+                 
+                User user= (User) em.createNamedQuery("auth")
+                .setParameter("password", u.getPassword())
+                .setParameter("login",u.getLogin())
+                .getSingleResult();
+                 return user;
+              } catch (Exception e) {
+                System.err.println(e);
+                   return null;
+              }
+      
         }
-          
-           
-       }
 
 
 }

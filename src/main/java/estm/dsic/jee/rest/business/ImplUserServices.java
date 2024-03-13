@@ -1,4 +1,4 @@
-package estm.dsic.jee.rest.services;
+package estm.dsic.jee.rest.business;
 
 import java.io.Serializable;
 
@@ -17,6 +17,10 @@ public class ImplUserServices implements IUserServices,Serializable{
     @Override
     public boolean create(User u) {
         return userDao.create(u);
+    }
+    @Override
+    public User auth(User u) {
+         return userDao.auth(u);
     }
     
 }
