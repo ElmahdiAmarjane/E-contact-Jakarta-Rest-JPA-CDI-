@@ -14,6 +14,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 @Entity
 @NamedQuery(name="auth",query="SELECT u FROM User u where u.password = :password AND u.login = :login")
+@NamedQuery(name="getAll",query = "SELECT u FROM User u")
 public class User implements Serializable{
 
      private static final long serialVersionUID = 1L;

@@ -1,6 +1,7 @@
 package estm.dsic.jee.rest.business;
 
 import java.io.Serializable;
+import java.util.List;
 
 import estm.dsic.jee.rest.dal.UserDao;
 import estm.dsic.jee.rest.models.User;
@@ -21,6 +22,14 @@ public class ImplUserServices implements IUserServices,Serializable{
     @Override
     public User auth(User u) {
          return userDao.auth(u);
+    }
+    @Override
+    public User find(User u) {
+          return userDao.find(u);
+    }
+    @Override
+    public List<User> getAll() {
+         return userDao.getAll();
     }
     
 }

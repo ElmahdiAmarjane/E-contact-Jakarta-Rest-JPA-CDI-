@@ -1,5 +1,7 @@
 package estm.dsic.jee.rest.dal;
 
+import java.util.List;
+
 import estm.dsic.jee.rest.models.User;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
@@ -8,6 +10,7 @@ import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.resource.cci.ResultSet;
 import jakarta.transaction.Transactional;
 
@@ -28,6 +31,7 @@ public class UserDao {
             return false;
         }   
            }
+
         public User auth(User u){
               try {
                  
@@ -43,5 +47,17 @@ public class UserDao {
       
         }
 
+        public User  find (User u){
+           return em.find(User.class,u.getId());
+        }
 
+        public List<User> getAll(){
+              try {
+                return (List<User>) em.createNamedQuery("getAll").getResultList();
+                        
+               } catch (Exception e) {
+                 System.err.println(e);
+                 return null;
+               }
+        }
 }
