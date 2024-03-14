@@ -30,7 +30,20 @@ public class AdminController {
     public List<User> getAll(){
          return userServices.getAll();
     }
-
+    @Path("/update")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean update(User user){
+         return userServices.update(user);
+    }
+    @Path("/remove")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean remove(User user){
+         return userServices.remove(user);
+    }
 
 
 

@@ -30,8 +30,19 @@ public class User implements Serializable{
 
     @Column
     private boolean isAdmin;
+    
+    @Column
+    private boolean isValide;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    public boolean getisValide() {
+     return isValide;
+    }
+
+public void setisValide(boolean isValide) {
+     this.isValide = isValide;
+}
+
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
          private List<Contact> contacts;
 
 public static long getSerialversionuid() {

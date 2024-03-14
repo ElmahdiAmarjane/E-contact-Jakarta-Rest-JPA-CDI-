@@ -31,5 +31,14 @@ public class ImplUserServices implements IUserServices,Serializable{
     public List<User> getAll() {
          return userDao.getAll();
     }
+    @Override
+    public boolean update(User user) {
+         return userDao.update(user);
+        
+    }
+    @Override
+    public boolean remove(User u) {
+          return userDao.remove(u);
+    }
     
 }

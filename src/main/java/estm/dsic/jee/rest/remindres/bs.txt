@@ -1,0 +1,9 @@
+{
+
+    "nom": "ELMAHDI CLIANT",
+    "tele": "0633334422",
+    "email":"elma@edu.ac.ma",
+    "address":"morocco,Amsdegt",
+    "user_id":8
+   
+  }

@@ -9,9 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 
 @Entity
+//@NamedQuery(name = "create", query = "INSERT INTO Contact (nom, tele, email, Address, user_id) VALUES (:nom, :tele, :email, :address, :userId)")
+@NamedQuery(name = "getAllByUserId", query = "SELECT c FROM Contact c WHERE c.user.id = :userId")
 public class Contact implements Serializable{
+
      private static final long serialVersionUID = 1L;
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,10 +86,16 @@ public class Contact implements Serializable{
         return user;
     }
 
+    // public void setUser(User user) {
+    //     this.user = user;
+    // }
     public void setUser(User user) {
         this.user = user;
+        if (user != null) {
+            this.user.setId(user.getId());  // Assuming getId() returns the user_id
+        } 
     }
-      
+    
 
      
 }

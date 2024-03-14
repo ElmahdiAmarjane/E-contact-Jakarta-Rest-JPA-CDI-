@@ -10,5 +10,7 @@ public interface IUserServices {
          User auth(User u);
          User find(User u);
          List<User> getAll();
+         boolean update(User u);
+         boolean remove(User u);
 
 }
