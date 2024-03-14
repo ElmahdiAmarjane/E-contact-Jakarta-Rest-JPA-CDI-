@@ -1,5 +1,6 @@
 package estm.dsic.jee.rest.business;
 
+import java.io.Serializable;
 import java.util.List;
 
 import estm.dsic.jee.rest.dal.ContactDao;
@@ -10,7 +11,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 @Named
 @RequestScoped 
-public class ImplContactServices implements IContactServices{
+public class ImplContactServices implements IContactServices,Serializable{
     @Inject
       ContactDao contactDao;
 
@@ -40,6 +41,13 @@ public class ImplContactServices implements IContactServices{
     @Override
     public boolean update(Contact c) {
           return contactDao.update(c);
+    }
+
+
+
+    @Override
+    public int nbrContacts(User u) {
+         return contactDao.nbrContacts(u);
     }
     
     

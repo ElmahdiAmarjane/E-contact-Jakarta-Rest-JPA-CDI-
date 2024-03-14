@@ -7,3 +7,13 @@
     "user_id":8
    
   }
+
+  {
+     "id":7,
+    "nom": "omar CLIANT",
+    "tele": "0655534422",
+    "email":"omar@edu.ac.ma",
+    "address":"EUROpe,Amsdegt",
+    "user":{"id":8}
+    
+  }

@@ -12,7 +12,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/contacts")
+@Path("/contact")
 public class ContactController {
     @Inject
       private IContactServices contactServices;
@@ -46,6 +46,14 @@ public class ContactController {
    @Consumes(MediaType.APPLICATION_JSON)
    public boolean update(Contact c){
          return contactServices.update(c);
+   }
+   @Path("/nbrcontacts")
+   @POST
+   @Produces(MediaType.APPLICATION_JSON)
+   @Consumes(MediaType.APPLICATION_JSON)
+   public int nbrContacts(User user){
+      System.out.println("id user con controller : "+user.getId());
+         return contactServices.nbrContacts(user);
    }
 
 }

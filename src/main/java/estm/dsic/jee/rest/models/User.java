@@ -12,6 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @NamedQuery(name="auth",query="SELECT u FROM User u where u.password = :password AND u.login = :login")
 @NamedQuery(name="getAll",query = "SELECT u FROM User u")
@@ -41,9 +44,9 @@ public class User implements Serializable{
 public void setisValide(boolean isValide) {
      this.isValide = isValide;
 }
-
+@JsonManagedReference
 @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-         private List<Contact> contacts;
+       //  private List<Contact> contacts;
 
 public static long getSerialversionuid() {
      return serialVersionUID;
@@ -81,13 +84,13 @@ public void setisAdmin(boolean isAdmin) {
      this.isAdmin = isAdmin;
 }
 
-public List<Contact> getContacts() {
-     return contacts;
-}
+// public List<Contact> getContacts() {
+//      return contacts;
+// }
 
-public void setContacts(List<Contact> contacts) {
-     this.contacts = contacts;
-}
+// public void setContacts(List<Contact> contacts) {
+//      this.contacts = contacts;
+// }
 
 
 

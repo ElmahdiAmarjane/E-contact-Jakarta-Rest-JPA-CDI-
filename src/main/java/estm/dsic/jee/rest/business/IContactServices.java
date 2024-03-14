@@ -11,4 +11,5 @@ public interface IContactServices {
      List<Contact> getAll(User u);
      boolean remove(Contact c);
      boolean update(Contact c);
+     int nbrContacts(User u);
 }

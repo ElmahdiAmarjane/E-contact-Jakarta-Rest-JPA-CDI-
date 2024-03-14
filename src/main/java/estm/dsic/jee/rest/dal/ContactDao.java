@@ -8,6 +8,7 @@ import estm.dsic.jee.rest.models.User;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext; 
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -68,6 +69,23 @@ public class ContactDao {
          return false;
       }
    }
+    
+   public int nbrContacts(User user) {
+    try {
+        int nbr = ((Number) em.createNamedQuery("getNbrContacts")
+                             .setParameter("userId", user.getId())
+                             .getSingleResult()).intValue();
+                             System.out.println("id user contacts : "+nbr);
+        return nbr;
+    } catch (NoResultException e) {
+      System.out.println("No resul nbr contact");
+        return 0;
+    } catch (Exception e) {
+        // Handle other exceptions
+        System.out.println(e);
+        return 0;
+    }
+}
 
 
 }

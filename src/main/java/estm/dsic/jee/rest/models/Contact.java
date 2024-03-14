@@ -10,10 +10,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 //@NamedQuery(name = "create", query = "INSERT INTO Contact (nom, tele, email, Address, user_id) VALUES (:nom, :tele, :email, :address, :userId)")
 @NamedQuery(name = "getAllByUserId", query = "SELECT c FROM Contact c WHERE c.user.id = :userId")
+@NamedQuery(name="getNbrContacts" , query = "SELECT COUNT(c) FROM Contact c WHERE c.user.id = :userId")
 public class Contact implements Serializable{
 
      private static final long serialVersionUID = 1L;
@@ -36,6 +37,7 @@ public class Contact implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "user_id") 
+    @JsonBackReference
     private User user;
 
     public static long getSerialversionuid() {
